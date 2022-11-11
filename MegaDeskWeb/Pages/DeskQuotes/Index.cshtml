@@ -1,0 +1,72 @@
+@page
+@model MegaDeskWeb.Pages_DeskQuotes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].customerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].quoteTotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].startDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].finishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].contactMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].contactInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Desk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.DeskQuote) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quoteTotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.finishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contactMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contactInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desk.DeskId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.DeskQuoteId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.DeskQuoteId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.DeskQuoteId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
