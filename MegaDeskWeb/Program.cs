@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MegaDeskWeb.Models;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,13 @@ builder.Services.AddDbContext<MegaDeskWebContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MegaDeskWebContext") ?? throw new InvalidOperationException("Connection string 'MegaDeskWebContext' not found.")));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    Material.Initialize(services);
+    RushOption.RushOptionSeed(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

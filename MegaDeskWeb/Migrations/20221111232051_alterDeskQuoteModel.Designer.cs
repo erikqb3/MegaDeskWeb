@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaDeskWeb.Migrations
 {
     [DbContext(typeof(MegaDeskWebContext))]
-    partial class MegaDeskWebContextModelSnapshot : ModelSnapshot
+    [Migration("20221111232051_alterDeskQuoteModel")]
+    partial class alterDeskQuoteModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -55,6 +57,12 @@ namespace MegaDeskWeb.Migrations
                     b.Property<int>("DeskId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RushOptionId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("contactInfo")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -67,6 +75,12 @@ namespace MegaDeskWeb.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("depth")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("drawerCount")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("finishDate")
                         .HasColumnType("TEXT");
 
@@ -75,6 +89,9 @@ namespace MegaDeskWeb.Migrations
 
                     b.Property<DateTime>("startDate")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("width")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("DeskQuoteId");
 
@@ -89,12 +106,11 @@ namespace MegaDeskWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("name")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("price")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("price")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("MaterialId");
 
@@ -107,13 +123,10 @@ namespace MegaDeskWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("basePrice")
+                    b.Property<int>("calcPrice")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("days")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("modifier")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("RushOptionId");

@@ -1,5 +1,5 @@
 @page
-@model MegaDeskWeb.Pages_RushOptions.IndexModel
+@model MegaDeskWeb.Pages_ExtraPages_RushOptions.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -17,7 +17,10 @@
                 @Html.DisplayNameFor(model => model.RushOption[0].days)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RushOption[0].calcPrice)
+                @Html.DisplayNameFor(model => model.RushOption[0].basePrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RushOption[0].modifier)
             </th>
             <th></th>
         </tr>
@@ -29,7 +32,10 @@
                 @Html.DisplayFor(modelItem => item.days)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.calcPrice)
+                @Html.DisplayFor(modelItem => item.basePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modifier)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.RushOptionId">Edit</a> |

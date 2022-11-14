@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MegaDeskWeb.Models;
 
-namespace MegaDeskWeb.Pages_RushOptions
+namespace MegaDeskWeb.Pages_ExtraPages_RushOptions
 {
     public class IndexModel : PageModel
     {

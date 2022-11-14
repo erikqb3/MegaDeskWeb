@@ -18,15 +18,27 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             _context = context;
         }
 
-        public IActionResult OnGet()
-        {
-        ViewData["DeskId"] = new SelectList(_context.Desk, "DeskId", "DeskId");
-            return Page();
-        }
-
         [BindProperty]
         public DeskQuote DeskQuote { get; set; } = default!;
-        
+        [BindProperty]
+        public Desk Desk { get; set; } = default;
+
+        public SelectList ? Material { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ? SearchMaterials { get; set; }
+
+
+
+
+        public IActionResult OnGet()
+        {
+
+        ViewData["DeskId"] = new SelectList(_context.Desk, "DeskId", "DeskId");
+        ViewData["MaterialId"] = new SelectList(_context.Material, "MaterialId", "name");
+            return Page();
+
+        }
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()

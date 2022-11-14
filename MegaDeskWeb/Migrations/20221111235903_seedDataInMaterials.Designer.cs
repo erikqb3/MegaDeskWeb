@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaDeskWeb.Migrations
 {
     [DbContext(typeof(MegaDeskWebContext))]
-    partial class MegaDeskWebContextModelSnapshot : ModelSnapshot
+    [Migration("20221111235903_seedDataInMaterials")]
+    partial class seedDataInMaterials
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -107,13 +109,10 @@ namespace MegaDeskWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("basePrice")
+                    b.Property<int>("calcPrice")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("days")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("modifier")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("RushOptionId");

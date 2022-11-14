@@ -1,5 +1,5 @@
 @page
-@model MegaDeskWeb.Pages_RushOptions.CreateModel
+@model MegaDeskWeb.Pages_ExtraPages_RushOptions.CreateModel
 
 @{
     ViewData["Title"] = "Create";
@@ -19,9 +19,14 @@
                 <span asp-validation-for="RushOption.days" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RushOption.calcPrice" class="control-label"></label>
-                <input asp-for="RushOption.calcPrice" class="form-control" />
-                <span asp-validation-for="RushOption.calcPrice" class="text-danger"></span>
+                <label asp-for="RushOption.basePrice" class="control-label"></label>
+                <input asp-for="RushOption.basePrice" class="form-control" />
+                <span asp-validation-for="RushOption.basePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RushOption.modifier" class="control-label"></label>
+                <input asp-for="RushOption.modifier" class="form-control" />
+                <span asp-validation-for="RushOption.modifier" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

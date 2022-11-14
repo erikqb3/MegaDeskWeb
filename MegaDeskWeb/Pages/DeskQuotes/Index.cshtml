@@ -17,7 +17,13 @@
                 @Html.DisplayNameFor(model => model.DeskQuote[0].customerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].quoteTotalPrice)
+                @Html.DisplayNameFor(model => model.DeskQuote[0].contactMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].contactInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Desk)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].startDate)
@@ -26,13 +32,7 @@
                 @Html.DisplayNameFor(model => model.DeskQuote[0].finishDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].contactMethod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].contactInfo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Desk)
+                @Html.DisplayNameFor(model => model.DeskQuote[0].quoteTotalPrice)
             </th>
             <th></th>
         </tr>
@@ -44,7 +44,13 @@
                 @Html.DisplayFor(modelItem => item.customerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.quoteTotalPrice)
+                @Html.DisplayFor(modelItem => item.contactMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contactInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desk.DeskId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.startDate)
@@ -53,13 +59,7 @@
                 @Html.DisplayFor(modelItem => item.finishDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contactMethod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.contactInfo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desk.DeskId)
+                @Html.DisplayFor(modelItem => item.quoteTotalPrice)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.DeskQuoteId">Edit</a> |

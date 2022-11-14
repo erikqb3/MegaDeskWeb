@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MegaDeskWeb.Models;
 
-namespace MegaDeskWeb.Pages_RushOptions
+namespace MegaDeskWeb.Pages_ExtraPages_RushOptions
 {
     public class EditModel : PageModel
     {
