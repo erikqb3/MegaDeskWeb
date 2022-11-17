@@ -10,6 +10,14 @@ namespace MegaDeskWeb.Models
     public int basePrice { get; set; }
     public int modifier { get; set; } 
 
+    public Desk? Desk { get; set; }
+
+    // public int getExtraCost(){
+    //   int deskArea = this.Desk.getSquareIn();
+    //   int extraCost = 0;
+    //   return extraCost;
+    // }
+
     public static void RushOptionSeed(IServiceProvider serviceProvider) 
     {
       using (var context = new MegaDeskWebContext(
@@ -38,6 +46,11 @@ namespace MegaDeskWeb.Models
                 days = 7,
                 basePrice = 30,
                 modifier = 5
+              },
+              new RushOption{
+                days = 14,
+                basePrice = 0,
+                modifier = 0
               }
             );
             context.SaveChanges();

@@ -19,8 +19,11 @@
                 <span asp-validation-for="DeskQuote.customerName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.contactMethod" class="control-label"></label>
-                <input asp-for="DeskQuote.contactMethod" class="form-control" />
+                @* <input asp-for="DeskQuote.contactMethod" class="form-control" /> *@
+                <label asp-for="DeskQuote.contactMethod" class="control-label">Email</label>
+                <input type="radio" id="email" asp-for="DeskQuote.contactMethod" value="email">
+                <label asp-for="DeskQuote.contactMethod" class="control-label">Phone</label>
+                <input type="radio" id="phone" asp-for="DeskQuote.contactMethod" value="phone">
                 <span asp-validation-for="DeskQuote.contactMethod" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -30,53 +33,55 @@
             </div>
             <hr>
             <div class="form-group">
-                <label asp-for="DeskQuote.Desk.width" class="control-label"></label>
-                <input asp-for="DeskQuote.Desk.width" class="form-control" />
-                <span asp-validation-for="DeskQuote.Desk.width" class="text-danger"></span>
+                <label asp-for="Desk.width" class="control-label"></label>
+                <input id="deskWidth" asp-for="Desk.width" class="form-control" />
+                <span asp-validation-for="Desk.width" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Desk.depth" class="control-label"></label>
-                <input asp-for="DeskQuote.Desk.depth" class="form-control" />
-                <span asp-validation-for="DeskQuote.Desk.depth" class="text-danger"></span>
+                <label asp-for="Desk.depth" class="control-label"></label>
+                <input id="deskDepth" asp-for="Desk.depth" class="form-control" />
+                <span asp-validation-for="Desk.depth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Desk.drawerCount" class="control-label"></label>
-                <input asp-for="DeskQuote.Desk.drawerCount" class="form-control" />
-                <span asp-validation-for="DeskQuote.Desk.drawerCount" class="text-danger"></span>
+                <label asp-for="Desk.drawerCount" class="control-label"></label>
+                <input id="drawCount" asp-for="Desk.drawerCount" class="form-control" />
+                <span asp-validation-for="Desk.drawerCount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Desk.MaterialId" class="control-label"></label>
                 @* <input asp-for="DeskQuote.Desk.MaterialId" class="form-control" /> *@
-                <select asp-for="Desk.MaterialId" asp-items="ViewBag.MaterialId">
-                    <option value="">All</option>
+                <select id="deskMaterial" asp-for="Desk.MaterialId" asp-items="ViewBag.MaterialId">
+                    @* <option value="">All</option> *@
                 </select>
-                <span asp-validation-for="DeskQuote.Desk.MaterialId" class="text-danger"></span>
+                <span asp-validation-for="Desk.MaterialId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Desk.RushOptionId" class="control-label"></label>
-                <input asp-for="DeskQuote.Desk.RushOptionId" class="form-control" />
-                <span asp-validation-for="DeskQuote.Desk.RushOptionId" class="text-danger"></span>
+                <label asp-for="Desk.RushOptionId" class="control-label"></label>
+                <select id="rushOption" asp-for="Desk.RushOptionId" asp-items="ViewBag.RushOptionId">
+                    @* <option value="14">No Rush</option> *@
+                </select>
+                <span asp-validation-for="Desk.RushOptionId" class="text-danger"></span>
             </div>
             <hr>
-            <div class="form-group">
+            @* <div hidden class="form-group">
                 <label asp-for="DeskQuote.quoteTotalPrice" class="control-label"></label>
                 <input asp-for="DeskQuote.quoteTotalPrice" class="form-control" />
                 <span asp-validation-for="DeskQuote.quoteTotalPrice" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div hidden class="form-group">
                 <label asp-for="DeskQuote.startDate" class="control-label"></label>
                 <input id="startDate" asp-for="DeskQuote.startDate" class="form-control" />
                 <span asp-validation-for="DeskQuote.startDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div hidden class="form-group">
                 <label asp-for="DeskQuote.finishDate" class="control-label"></label>
                 <input asp-for="DeskQuote.finishDate" class="form-control" />
                 <span asp-validation-for="DeskQuote.finishDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </div> *@
+            @* <div  hidden class="form-group">
                 <label asp-for="DeskQuote.DeskId" class="control-label"></label>
                 <select asp-for="DeskQuote.DeskId" class ="form-control" asp-items="ViewBag.DeskId"></select>
-            </div>
+            </div> *@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -95,9 +100,5 @@
 }
 
 <script>
-    const startDate = document.getElementById('startDate');
-    const todayDate = new Date('14-Nov-2022');
 
-    startDate.value = todayDate;
-    console.log(todayDate, startDate);
 </script>

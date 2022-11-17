@@ -5,9 +5,10 @@ namespace MegaDeskWeb.Models
   public class Desk
   {
     public int DeskId { get; set; }
-    [Required][Display(Name = "Width")] public int width { get; set; }
-    [Required][Display(Name="Depth")] public int depth { get; set; }
-    [Display(Name="Drawers")]public int drawerCount { get; set; }
+    [Range(24,96)][Required][Display(Name = "Width (in.)")] public int width { get; set; }
+    [Range(12,48)][Required][Display(Name="Depth (in.)")] public int depth { get; set; }
+    [Range(0,7)][Display(Name="Drawers")]public int drawerCount { get; set; }
+ 
 
     [Required][Display(Name="Material")] public int MaterialId { get; set; }
     [Display(Name="Rush Days")]public int RushOptionId { get; set; }
@@ -15,5 +16,19 @@ namespace MegaDeskWeb.Models
     public Material? Material { get; set; }
     public RushOption? RushOption { get; set; }
 
+
+    public int getSquareIn(int iDepth, int iWidth){
+      int sqrIn_area = iDepth * iWidth;
+      return sqrIn_area;
+    }
+    
+    public int getExtraCost(int inputDepth, int inputWidth){
+      int sqrIn_area = this.getSquareIn(inputDepth, inputWidth);
+      int additionalCost = 0;
+      if (sqrIn_area > 1000){
+        additionalCost = sqrIn_area - 1000;
+      }
+      return additionalCost;
+    }
   }
 }
