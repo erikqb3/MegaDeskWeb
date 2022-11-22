@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaDeskWeb.Migrations
 {
     [DbContext(typeof(MegaDeskWebContext))]
-    partial class MegaDeskWebContextModelSnapshot : ModelSnapshot
+    [Migration("20221119022059_rebuildingDatabase")]
+    partial class rebuildingDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -50,7 +52,10 @@ namespace MegaDeskWeb.Migrations
                     b.Property<int>("DeskId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RushOptionId")
+                    b.Property<int>("RushDays")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("RushOptionId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("contactInfo")
@@ -107,6 +112,9 @@ namespace MegaDeskWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("DeskId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("basePrice")
                         .HasColumnType("INTEGER");
 
@@ -117,6 +125,8 @@ namespace MegaDeskWeb.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("RushOptionId");
+
+                    b.HasIndex("DeskId");
 
                     b.ToTable("RushOption");
                 });
@@ -142,13 +152,20 @@ namespace MegaDeskWeb.Migrations
 
                     b.HasOne("MegaDeskWeb.Models.RushOption", "RushOption")
                         .WithMany()
-                        .HasForeignKey("RushOptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RushOptionId");
 
                     b.Navigation("Desk");
 
                     b.Navigation("RushOption");
+                });
+
+            modelBuilder.Entity("MegaDeskWeb.Models.RushOption", b =>
+                {
+                    b.HasOne("MegaDeskWeb.Models.Desk", "Desk")
+                        .WithMany()
+                        .HasForeignKey("DeskId");
+
+                    b.Navigation("Desk");
                 });
 #pragma warning restore 612, 618
         }

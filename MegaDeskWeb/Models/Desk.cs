@@ -11,10 +11,8 @@ namespace MegaDeskWeb.Models
  
 
     [Required][Display(Name="Material")] public int MaterialId { get; set; }
-    [Display(Name="Rush Days")]public int RushOptionId { get; set; }
 
     public Material? Material { get; set; }
-    public RushOption? RushOption { get; set; }
 
 
     public int getSquareIn(int iDepth, int iWidth){

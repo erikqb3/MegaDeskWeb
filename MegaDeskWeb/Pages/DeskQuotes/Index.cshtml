@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Desk)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].customerName)
             </th>
             @* <th>
@@ -21,9 +24,6 @@
             </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].contactInfo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Desk)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].startDate)
@@ -41,6 +41,9 @@
 @foreach (var item in Model.DeskQuote) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Desk.DeskId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.customerName)
             </td>
             @* <td>
@@ -48,9 +51,6 @@
             </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.contactInfo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desk.DeskId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.startDate)

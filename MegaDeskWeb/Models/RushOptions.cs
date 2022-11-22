@@ -10,7 +10,7 @@ namespace MegaDeskWeb.Models
     public int basePrice { get; set; }
     public int modifier { get; set; } 
 
-    public Desk? Desk { get; set; }
+    // public Desk? Desk { get; set; }
 
     // public int getExtraCost(){
     //   int deskArea = this.Desk.getSquareIn();
