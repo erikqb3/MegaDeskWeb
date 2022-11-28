@@ -18,8 +18,8 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             _context = context;
         }
 
-        [BindProperty]
-      public DeskQuote DeskQuote { get; set; } = default!;
+        [BindProperty] public DeskQuote DeskQuote { get; set; } = default!;
+        [BindProperty] public Desk Desk { get; set; } = default;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,14 +29,16 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             }
 
             var deskquote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteId == id);
+            var desk = await _context.Desk.FirstOrDefaultAsync(n => n.DeskId == id);
 
-            if (deskquote == null)
+            if (deskquote == null || desk == null)
             {
                 return NotFound();
             }
             else 
             {
                 DeskQuote = deskquote;
+                Desk = desk;
             }
             return Page();
         }

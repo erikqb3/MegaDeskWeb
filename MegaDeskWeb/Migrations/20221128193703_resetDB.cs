@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MegaDeskWeb.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class resetDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,8 +15,8 @@ namespace MegaDeskWeb.Migrations
                 {
                     MaterialId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<int>(type: "INTEGER", nullable: false),
-                    price = table.Column<int>(type: "INTEGER", nullable: false)
+                    name = table.Column<string>(type: "TEXT", nullable: false),
+                    price = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +30,8 @@ namespace MegaDeskWeb.Migrations
                     RushOptionId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     days = table.Column<int>(type: "INTEGER", nullable: false),
-                    calcPrice = table.Column<int>(type: "INTEGER", nullable: false)
+                    basePrice = table.Column<int>(type: "INTEGER", nullable: false),
+                    modifier = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,8 +47,7 @@ namespace MegaDeskWeb.Migrations
                     width = table.Column<int>(type: "INTEGER", nullable: false),
                     depth = table.Column<int>(type: "INTEGER", nullable: false),
                     drawerCount = table.Column<int>(type: "INTEGER", nullable: false),
-                    MaterialId = table.Column<int>(type: "INTEGER", nullable: false),
-                    RushOptionId = table.Column<int>(type: "INTEGER", nullable: false)
+                    MaterialId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,12 +58,6 @@ namespace MegaDeskWeb.Migrations
                         principalTable: "Material",
                         principalColumn: "MaterialId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Desk_RushOption_RushOptionId",
-                        column: x => x.RushOptionId,
-                        principalTable: "RushOption",
-                        principalColumn: "RushOptionId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,11 +67,12 @@ namespace MegaDeskWeb.Migrations
                     DeskQuoteId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     customerName = table.Column<string>(type: "TEXT", nullable: false),
-                    quoteTotalPrice = table.Column<float>(type: "REAL", nullable: false),
-                    startDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    finishDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     contactMethod = table.Column<string>(type: "TEXT", nullable: false),
                     contactInfo = table.Column<string>(type: "TEXT", nullable: false),
+                    startDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    RushOptionId = table.Column<int>(type: "INTEGER", nullable: false),
+                    finishDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    quoteTotalPrice = table.Column<float>(type: "REAL", nullable: false),
                     DeskId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -89,6 +84,12 @@ namespace MegaDeskWeb.Migrations
                         principalTable: "Desk",
                         principalColumn: "DeskId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DeskQuote_RushOption_RushOptionId",
+                        column: x => x.RushOptionId,
+                        principalTable: "RushOption",
+                        principalColumn: "RushOptionId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -97,14 +98,14 @@ namespace MegaDeskWeb.Migrations
                 column: "MaterialId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Desk_RushOptionId",
-                table: "Desk",
-                column: "RushOptionId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_DeskQuote_DeskId",
                 table: "DeskQuote",
                 column: "DeskId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DeskQuote_RushOptionId",
+                table: "DeskQuote",
+                column: "RushOptionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -116,10 +117,10 @@ namespace MegaDeskWeb.Migrations
                 name: "Desk");
 
             migrationBuilder.DropTable(
-                name: "Material");
+                name: "RushOption");
 
             migrationBuilder.DropTable(
-                name: "RushOption");
+                name: "Material");
         }
     }
 }

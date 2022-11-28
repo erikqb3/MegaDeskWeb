@@ -18,10 +18,10 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             _context = context;
         }
 
-        [BindProperty] public DeskQuote DeskQuote { get; set; } = default!;
-        [BindProperty] public Desk Desk { get; set; } = default;
-        [BindProperty] public RushOption RushOption { get; set; } = default;
-        [BindProperty] public RushOption MaterialsDB { get; set; } = default;
+        [BindProperty (SupportsGet = true)] public DeskQuote DeskQuote { get; set; } = default!;
+        [BindProperty (SupportsGet = true)] public Desk Desk { get; set; } = default;
+        [BindProperty (SupportsGet = true)] public RushOption RushOption { get; set; } = default;
+        [BindProperty (SupportsGet = true)] public RushOption MaterialsDB { get; set; } = default;
 
         // [BindProperty] public DeskQuote RushOption { get; set; } = default!;
 
@@ -76,13 +76,26 @@ namespace MegaDeskWeb.Pages_DeskQuotes
           
             // _context.DeskQuote.Add(RushOptionsDB);
 
-            var SelectedRushOption = from pikachu in _context.RushOption
-                                                        where pikachu.RushOptionId == DeskQuote.RushOptionId
-                                                        select pikachu.days;
+            var rushDaysQuery = from option in _context.RushOption
+                                        where option.RushOptionId == DeskQuote.RushOptionId
+                                        select option.days;
+
+            int rushDaysValue = rushDaysQuery.FirstOrDefault();
+
+            // var rushDays = from rO in _context.RushOption
+            //                 select rO;
+            
+            // rushDays = rushDays.Where(rD => rD.days == DeskQuote.RushOptionId);
 
             // var RushOptionVariable = SelectedRushOption;
 
-            Console.WriteLine(SelectedRushOption);
+            Console.WriteLine("START");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine(rushDaysValue);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("END");
             // var rushOption = await _context.RushOption
             //                     .Include( rO => rO.days)
             //                     .Include(rO => rO.Desk)
@@ -93,9 +106,10 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             //set setquote date
             // DeskQuote.startDate = DateTime.Now;
 
-
+            
             // DeskQuote.finishDate = DateTime.Now;
-            DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(SelectedRushOption)); 
+            // DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDays)); 
+            DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDaysValue)); 
             DeskQuote.quoteTotalPrice = DeskQuote.quoteTotalPrice + Desk.getExtraCost(Desk.depth,Desk.width);
 
 

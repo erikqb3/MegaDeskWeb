@@ -1,13 +1,12 @@
 @page
-@model MegaDeskWeb.Pages_DeskQuotes.DeleteModel
+@model MegaDeskWeb.Pages_DeskQuotes.DetailsModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Delete</h1>
+<h1>Details</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>DeskQuote</h4>
     <hr />
@@ -19,10 +18,10 @@
             @Html.DisplayFor(model => model.DeskQuote.customerName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.quoteTotalPrice)
+            @Html.DisplayNameFor(model => model.DeskQuote.contactInfo)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.quoteTotalPrice)
+            @Html.DisplayFor(model => model.DeskQuote.contactInfo)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DeskQuote.startDate)
@@ -36,25 +35,41 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DeskQuote.finishDate)
         </dd>
+        <hr>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.contactMethod)
+            @Html.DisplayNameFor(model => model.DeskQuote.Desk.width)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.contactMethod)
+            @Html.DisplayFor(model => model.DeskQuote.Desk.width)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.contactInfo)
+            @Html.DisplayNameFor(model => model.DeskQuote.Desk.depth)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.contactInfo)
+            @Html.DisplayFor(model => model.Desk.depth)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.Desk)
+            @Html.DisplayNameFor(model => model.DeskQuote.Desk.drawerCount)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.Desk.DeskId)
+            @Html.DisplayFor(model => model.DeskQuote.Desk.drawerCount)
+        </dd>
+                <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeskQuote.Desk.Material)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Material.name)
+        </dd>
+        <hr>
+            <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeskQuote.quoteTotalPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeskQuote.quoteTotalPrice)
         </dd>
     </dl>
+</div>
+
     
     <form method="post">
         <input type="hidden" asp-for="DeskQuote.DeskQuoteId" />

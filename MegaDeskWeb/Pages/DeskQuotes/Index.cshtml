@@ -13,9 +13,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].Desk)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].customerName)
             </th>
@@ -40,9 +40,9 @@
     <tbody>
 @foreach (var item in Model.DeskQuote) {
         <tr>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.Desk.DeskId)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.customerName)
             </td>

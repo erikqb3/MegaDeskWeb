@@ -19,8 +19,9 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             _context = context;
         }
 
-        [BindProperty]
-        public DeskQuote DeskQuote { get; set; } = default!;
+        [BindProperty]public DeskQuote DeskQuote { get; set; } = default!;
+        [BindProperty]public Desk Desk { get; set; } = default;
+        [BindProperty] public Material Material { get; set; } = default;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +31,19 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             }
 
             var deskquote =  await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteId == id);
-            if (deskquote == null)
+            var desk = await _context.Desk.FirstOrDefaultAsync(n => n.DeskId == id);
+            var material = await _context.Material.FirstOrDefaultAsync(o => o.MaterialId == id);
+
+            if (deskquote == null || desk == null || material == null)
             {
                 return NotFound();
             }
-            DeskQuote = deskquote;
-           ViewData["DeskId"] = new SelectList(_context.Desk, "DeskId", "DeskId");
+            else 
+            {
+                DeskQuote = deskquote;
+                Desk = desk;
+                Material = material;
+            }
             return Page();
         }
 

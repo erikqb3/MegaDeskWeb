@@ -18,7 +18,10 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             _context = context;
         }
 
-      public DeskQuote DeskQuote { get; set; } = default!; 
+        [BindProperty] public DeskQuote DeskQuote { get; set; } = default!;
+        [BindProperty] public Desk Desk { get; set; } = default;
+        [BindProperty] public Material Material { get; set; } = default;
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,7 +30,13 @@ namespace MegaDeskWeb.Pages_DeskQuotes
                 return NotFound();
             }
 
-            var deskquote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteId == id);
+            var deskquote = await _context.DeskQuote
+                .Include(m => m.Desk)
+                    .ThenInclude(m => m.Material)
+                        .FirstOrDefaultAsync(m => m.DeskQuoteId == id);
+            // var desk = await _context.Desk.FirstOrDefaultAsync(n => n.DeskId == id);
+            // var material = await _context.Material.FirstOrDefaultAsync(o => o.MaterialId == id);
+
             if (deskquote == null)
             {
                 return NotFound();
@@ -38,5 +47,6 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             }
             return Page();
         }
+
     }
 }
