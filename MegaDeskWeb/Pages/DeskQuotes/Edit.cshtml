@@ -12,6 +12,10 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
+            <div  hidden class="form-group">
+                <label asp-for="DeskQuote.DeskQuoteId" class="control-label"></label>
+                <select asp-for="DeskQuote.DeskQuoteId" class ="form-control" asp-items="ViewBag.DeskId"></select>
+            </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DeskQuote.DeskQuoteId" />
             <div class="form-group">
@@ -36,25 +40,37 @@
             <hr>
 
             <div class="form-group">
-                <label asp-for="Desk.width" class="control-label"></label>
-                <input asp-for="Desk.width" class="form-control" />
-                <span asp-validation-for="Desk.width" class="text-danger"></span>
+                <label asp-for="DeskQuote.Desk.width" class="control-label"></label>
+                <input asp-for="DeskQuote.Desk.width" class="form-control" />
+                <span asp-validation-for="DeskQuote.Desk.width" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Desk.depth" class="control-label"></label>
-                <input asp-for="Desk.depth" class="form-control" />
-                <span asp-validation-for="Desk.depth" class="text-danger"></span>
+                <label asp-for="DeskQuote.Desk.depth" class="control-label"></label>
+                <input asp-for="DeskQuote.Desk.depth" class="form-control" />
+                <span asp-validation-for="DeskQuote.Desk.depth" class="text-danger"></span>
             </div>  
             <div class="form-group">
-                <label asp-for="Desk.drawerCount" class="control-label"></label>
-                <input asp-for="Desk.drawerCount" class="form-control" />
-                <span asp-validation-for="Desk.drawerCount" class="text-danger"></span>
+                <label asp-for="DeskQuote.Desk.drawerCount" class="control-label"></label>
+                <input asp-for="DeskQuote.Desk.drawerCount" class="form-control" />
+                <span asp-validation-for="DeskQuote.Desk.drawerCount" class="text-danger"></span>
             </div>  
+            @* <div class="form-group">
+                <label asp-for="DeskQuote.Desk.Material.name" class="control-label"></label>
+                <input asp-for="DeskQuote.Desk.Material.name" class="form-control" />
+                <span asp-validation-for="DeskQuote.Desk.Material.name" class="text-danger"></span>
+            </div>    *@
             <div class="form-group">
-                <label asp-for="Material.name" class="control-label"></label>
-                <input asp-for="Material.name" class="form-control" />
-                <span asp-validation-for="Material.name" class="text-danger"></span>
-            </div>   
+                <label asp-for="DeskQuote.Desk.MaterialId" class="control-label"></label>
+                <select id="deskMaterial" asp-for="DeskQuote.Desk.MaterialId" asp-items="ViewBag.MaterialId">
+                </select>
+                <span asp-validation-for="DeskQuote.Desk.MaterialId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.RushOptionId" class="control-label"></label>
+                <select id="rushOption" asp-for="DeskQuote.RushOptionId" asp-items="ViewBag.RushOptionId">
+                </select>
+                <span asp-validation-for="DeskQuote.RushOptionId" class="text-danger"></span>
+            </div>
 
             <hr>
             

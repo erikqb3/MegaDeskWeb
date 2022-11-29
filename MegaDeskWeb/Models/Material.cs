@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 // using MegaDeskWeb.Data;
 
 namespace MegaDeskWeb.Models
@@ -8,7 +9,7 @@ namespace MegaDeskWeb.Models
   {
     public int MaterialId { get; set; }
     public string name { get; set; } = string.Empty;
-    public decimal price { get; set; }
+     [DataType(DataType.Currency), Column(TypeName = "decimal(18, 2)")] public int price { get; set; }
   
     public static void Initialize(IServiceProvider serviceProvider)
     {
@@ -28,37 +29,45 @@ namespace MegaDeskWeb.Models
           new Material
           {
             name = "Oak",
-            price = 200M
+            price = 200
           },
           new Material
           {
             name = "Laminated",
-            price = 100M
+            price = 100
           },
           new Material
           {
             name = "Pine",
-            price = 50M
+            price = 50
           },
           new Material
           {
             name = "Rosewood",
-            price = 300M
+            price = 300
           },
           new Material
           {
             name = "Veneer",
-            price = 125M
+            price = 125
           },
           new Material
           {
             name = "Mahogany",
-            price = 999M
+            price = 999
           }
         );
         context.SaveChanges();
       }
     }
 
+    public int getMaterialCost(Material mObject){
+      int materialCost = 0;
+      Console.WriteLine(mObject.name);
+      Console.WriteLine(mObject.price);
+
+
+      return materialCost;
+    }
   }
 }

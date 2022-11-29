@@ -20,29 +20,30 @@ namespace MegaDeskWeb.Pages_DeskQuotes
         }
 
         [BindProperty]public DeskQuote DeskQuote { get; set; } = default!;
-        [BindProperty]public Desk Desk { get; set; } = default;
-        [BindProperty] public Material Material { get; set; } = default;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
+            ViewData["MaterialId"] = new SelectList(_context.Material, "MaterialId", "name");
+            ViewData["RushOptionId"] = new SelectList(_context.RushOption, "RushOptionId", "days");
+            
             if (id == null || _context.DeskQuote == null)
             {
                 return NotFound();
             }
 
-            var deskquote =  await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteId == id);
-            var desk = await _context.Desk.FirstOrDefaultAsync(n => n.DeskId == id);
-            var material = await _context.Material.FirstOrDefaultAsync(o => o.MaterialId == id);
+            var deskquote = await _context.DeskQuote
+                .Include(m => m.Desk)
+                    .ThenInclude(m => m.Material)
+                        .FirstOrDefaultAsync(m => m.DeskQuoteId == id);
 
-            if (deskquote == null || desk == null || material == null)
+            if (deskquote == null)
             {
                 return NotFound();
             }
             else 
             {
                 DeskQuote = deskquote;
-                Desk = desk;
-                Material = material;
             }
             return Page();
         }

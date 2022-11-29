@@ -20,13 +20,22 @@ namespace MegaDeskWeb.Models
       return sqrIn_area;
     }
     
-    public int getExtraCost(int inputDepth, int inputWidth){
+    public int getAreaCost(int inputDepth, int inputWidth){
       int sqrIn_area = this.getSquareIn(inputDepth, inputWidth);
       int additionalCost = 0;
       if (sqrIn_area > 1000){
         additionalCost = sqrIn_area - 1000;
       }
       return additionalCost;
+    }
+
+    public int getDrawerCost(int drawerCount){
+      int drawerCost = 0;
+      if (drawerCount != 0 ){
+        drawerCost = drawerCount*50;
+      }
+      return drawerCost;
+      
     }
   }
 }
