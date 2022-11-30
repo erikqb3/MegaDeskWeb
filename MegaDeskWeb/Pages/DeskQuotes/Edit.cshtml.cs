@@ -20,6 +20,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
         }
 
         [BindProperty]public DeskQuote DeskQuote { get; set; } = default!;
+        public Desk Desk { get; set; } = default;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -57,7 +58,35 @@ namespace MegaDeskWeb.Pages_DeskQuotes
                 return Page();
             }
 
-            DeskQuote.quoteTotalPrice = DeskQuote.quoteTotalPrice + 100;
+
+
+            // DeskQuote.DeskId = Desk.DeskId;
+            // DeskQuote.Desk = Desk;
+
+
+
+
+
+
+            Console.WriteLine(DeskQuote.Desk.depth);
+            Console.WriteLine(DeskQuote.Desk.width);
+            Console.WriteLine(DeskQuote.Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width));
+
+
+
+            // DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(DeskQuote.RushOption.days));
+
+            DeskQuote.quoteTotalPrice = 
+                DeskQuote.quoteTotalPrice +
+                DeskQuote.Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width) +
+                DeskQuote.Desk.getDrawerCost(DeskQuote.Desk.drawerCount);
+                // + 
+                // Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width);
+            
+            // DeskQuote.quoteTotalPrice = 
+            //     DeskQuote.quoteTotalPrice +
+            //     Desk.getAreaCost(Desk.depth,Desk.width) + 
+            //     Desk.getDrawerCost(Desk.drawe rCount);
             _context.Attach(DeskQuote).State = EntityState.Modified;
 
             try
