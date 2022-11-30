@@ -64,17 +64,23 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             // DeskQuote.Desk = Desk;
 
 
+            var rushQuery = from option in _context.RushOption
+                                where option.RushOptionId == DeskQuote.RushOptionId
+                                select option;
+
+            RushOption rushObject = rushQuery.FirstOrDefault();
+
+
+            Console.WriteLine(rushObject.days);
+            // Console.WriteLine(DeskQuote.RushOption.days);
+            Console.WriteLine();
+            Console.WriteLine();
 
 
 
 
-            Console.WriteLine(DeskQuote.Desk.depth);
-            Console.WriteLine(DeskQuote.Desk.width);
-            Console.WriteLine(DeskQuote.Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width));
 
-
-
-            // DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(DeskQuote.RushOption.days));
+            DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushObject.days));
 
             DeskQuote.quoteTotalPrice = 
                 DeskQuote.quoteTotalPrice +
