@@ -67,11 +67,15 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             var rushQuery = from option in _context.RushOption
                                 where option.RushOptionId == DeskQuote.RushOptionId
                                 select option;
+            var materialQuery = from option in _context.Material
+                                where option.MaterialId == DeskQuote.Desk.MaterialId
+                                select option;                                
 
             RushOption rushObject = rushQuery.FirstOrDefault();
+            Material materialObject = materialQuery.FirstOrDefault();
 
 
-            Console.WriteLine(rushObject.days);
+            Console.WriteLine(materialObject.price);
             // Console.WriteLine(DeskQuote.RushOption.days);
             Console.WriteLine();
             Console.WriteLine();
@@ -85,7 +89,8 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             DeskQuote.quoteTotalPrice = 
                 DeskQuote.quoteTotalPrice +
                 DeskQuote.Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width) +
-                DeskQuote.Desk.getDrawerCost(DeskQuote.Desk.drawerCount);
+                DeskQuote.Desk.getDrawerCost(DeskQuote.Desk.drawerCount) +
+                materialObject.price;
                 // + 
                 // Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width);
             
