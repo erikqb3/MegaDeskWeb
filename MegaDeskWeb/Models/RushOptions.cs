@@ -56,7 +56,22 @@ namespace MegaDeskWeb.Models
             context.SaveChanges();
           }
     }
+    public int getRushCost(RushOption rObject, int area){
+      int rushCost = 0;
+      int multiplier = 0;
+      if (area < 1000){
+        multiplier = 0;
+      }
+      else if (area >= 1000 && area <= 2000){
+        multiplier = 1;
+      }
+      else {
+        multiplier = 2;
+      }
 
+      rushCost = rObject.basePrice + (rObject.modifier * multiplier);
+      return rushCost;
+    }
   }
 
 }

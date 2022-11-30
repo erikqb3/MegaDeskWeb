@@ -49,7 +49,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             {
                 return NotFound();
             }
-            var deskquote = await _context.DeskQuote.FindAsync(id);
+            var deskquote = await _context.DeskQuote.FindAsync(id); 
 
             if (deskquote != null)
             {

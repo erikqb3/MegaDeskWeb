@@ -20,7 +20,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
 
         [BindProperty (SupportsGet = true)] public DeskQuote DeskQuote { get; set; } = default!;
         [BindProperty (SupportsGet = true)] public Desk Desk { get; set; } = default;
-        [BindProperty (SupportsGet = true)] public RushOption RushOption { get; set; } = default;
+        [BindProperty (SupportsGet = true)] public RushOption Rush { get; set; } = default;
         [BindProperty (SupportsGet = true)] public Material MaterialsDB { get; set; } = default;
 
         // [BindProperty] public DeskQuote RushOption { get; set; } = default!;
@@ -73,7 +73,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             // Console.Write(DeskQuote);
             // set desk
             DeskQuote.Desk = Desk;
-            DeskQuote.RushOption = RushOption;
+            DeskQuote.RushOption = Rush;
             DeskQuote.Desk.Material = MaterialsDB;
             // DeskQuote.RushOption = RushOption;
           
@@ -104,7 +104,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             Console.WriteLine("START");
             Console.WriteLine();
             Console.WriteLine();
-            // Console.WriteLine(rushObject.getRushCost(rushObject, Desk.width*Desk.depth));
+            Console.WriteLine(Rush.getRushCost(rushObject, Desk.width*Desk.depth));
             // MaterialsDB.getMaterialCost(materialCost);
             Console.WriteLine();
             Console.WriteLine();
@@ -123,7 +123,12 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             // DeskQuote.finishDate = DateTime.Now;
             // DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDays)); 
             DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDaysValue)); 
-            DeskQuote.quoteTotalPrice = DeskQuote.quoteTotalPrice + Desk.getAreaCost(Desk.depth,Desk.width) + Desk.getDrawerCost(Desk.drawerCount) + materialCost;
+            DeskQuote.quoteTotalPrice = 
+                DeskQuote.quoteTotalPrice + 
+                Desk.getAreaCost(Desk.depth,Desk.width) + 
+                Desk.getDrawerCost(Desk.drawerCount) + 
+                materialCost +
+                Rush.getRushCost(rushObject, Desk.width*Desk.depth);
             
 
 
