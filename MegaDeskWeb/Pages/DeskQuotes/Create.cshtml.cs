@@ -60,7 +60,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             //add desk
 
             _context.Desk.Add(Desk);
-            _context.Material.Add(MaterialsDB);
+            // _context.Material.Add(MaterialsDB);
             await _context.SaveChangesAsync();
 
             Console.WriteLine(_context.RushOption);
@@ -73,6 +73,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             // Console.Write(DeskQuote);
             // set desk
             DeskQuote.Desk = Desk;
+            DeskQuote.RushOption = RushOption;
             DeskQuote.Desk.Material = MaterialsDB;
             // DeskQuote.RushOption = RushOption;
           
@@ -84,9 +85,13 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             var materialQuery = from option in _context.Material
                                     where option.MaterialId == DeskQuote.Desk.MaterialId
                                     select option.price;
+            var rushQuery = from option in _context.RushOption
+                                    where option.RushOptionId == DeskQuote.RushOptionId
+                                    select option;
 
             int rushDaysValue = rushDaysQuery.FirstOrDefault();
             int materialCost = materialQuery.FirstOrDefault();
+            RushOption rushObject = rushQuery.FirstOrDefault();
             // Material materialValue = materialQuery.FirstOrDefault();
 
             // var rushDays = from rO in _context.RushOption
@@ -99,7 +104,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             Console.WriteLine("START");
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine(materialCost);
+            // Console.WriteLine(rushObject.getRushCost(rushObject, Desk.width*Desk.depth));
             // MaterialsDB.getMaterialCost(materialCost);
             Console.WriteLine();
             Console.WriteLine();
@@ -118,7 +123,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             // DeskQuote.finishDate = DateTime.Now;
             // DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDays)); 
             DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDaysValue)); 
-            DeskQuote.quoteTotalPrice = DeskQuote.quoteTotalPrice + Desk.getAreaCost(Desk.depth,Desk.width) + Desk.getDrawerCost(Desk.drawerCount);
+            DeskQuote.quoteTotalPrice = DeskQuote.quoteTotalPrice + Desk.getAreaCost(Desk.depth,Desk.width) + Desk.getDrawerCost(Desk.drawerCount) + materialCost;
             
 
 
