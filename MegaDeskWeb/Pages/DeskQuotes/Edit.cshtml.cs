@@ -57,6 +57,7 @@ namespace MegaDeskWeb.Pages_DeskQuotes
                 return Page();
             }
 
+            DeskQuote.quoteTotalPrice = DeskQuote.quoteTotalPrice + 100;
             _context.Attach(DeskQuote).State = EntityState.Modified;
 
             try

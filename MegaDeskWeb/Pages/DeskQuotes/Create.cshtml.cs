@@ -70,11 +70,11 @@ namespace MegaDeskWeb.Pages_DeskQuotes
 
             // set desk Id
             DeskQuote.DeskId = Desk.DeskId;
+            DeskQuote.Desk = Desk;
             // Console.Write(DeskQuote);
             // set desk
-            DeskQuote.Desk = Desk;
-            DeskQuote.RushOption = Rush;
-            DeskQuote.Desk.Material = MaterialsDB;
+            // DeskQuote.RushOption = Rush;
+            // DeskQuote.Desk.Material = MaterialsDB;
             // DeskQuote.RushOption = RushOption;
           
             // _context.DeskQuote.Add(RushOptionsDB);
