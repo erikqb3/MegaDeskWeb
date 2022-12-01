@@ -28,18 +28,24 @@ namespace MegaDeskWeb.Pages_DeskQuotes
                 return NotFound();
             }
 
-            var deskquote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteId == id);
-            var desk = await _context.Desk.FirstOrDefaultAsync(n => n.DeskId == id);
+            var deskquote = await _context.DeskQuote
+                                .Include(d => d.RushOption)
+                                .Include(d => d.Desk)
+                                .Include(d => d.Desk.Material)
+                                .FirstOrDefaultAsync(m => m.DeskQuoteId == id)
+                                ;
+            // var desk = await _context.Desk.FirstOrDefaultAsync(n => n.DeskId == id);
 
-            if (deskquote == null || desk == null)
+            if (deskquote == null)
             {
                 return NotFound();
             }
             else 
             {
                 DeskQuote = deskquote;
-                Desk = desk;
             }
+
+             Console.WriteLine("Did not work");
             return Page();
         }
 
@@ -47,14 +53,25 @@ namespace MegaDeskWeb.Pages_DeskQuotes
         {
             if (id == null || _context.DeskQuote == null)
             {
+                Console.WriteLine();
+                Console.WriteLine("HELLOW");
+                Console.WriteLine();
                 return NotFound();
             }
-            var deskquote = await _context.DeskQuote.FindAsync(id); 
+            var deskquote = await _context.DeskQuote.FindAsync(id);
+            var desk =   await _context.Desk.FindAsync(id);
 
             if (deskquote != null)
             {
                 DeskQuote = deskquote;
                 _context.DeskQuote.Remove(DeskQuote);
+                await _context.SaveChangesAsync();
+            }
+            
+            if (desk != null)
+            {
+                Desk = desk;
+                _context.Desk.Remove(Desk);
                 await _context.SaveChangesAsync();
             }
 
