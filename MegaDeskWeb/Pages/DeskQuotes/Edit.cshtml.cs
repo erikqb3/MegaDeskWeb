@@ -35,8 +35,13 @@ namespace MegaDeskWeb.Pages_DeskQuotes
 
             var deskquote = await _context.DeskQuote
                 .Include(m => m.Desk)
-                    .ThenInclude(m => m.Material)
-                        .FirstOrDefaultAsync(m => m.DeskQuoteId == id);
+                        .ThenInclude(m => m.Material)
+                            .FirstOrDefaultAsync(m => m.DeskQuoteId == id);
+
+            deskquote = await _context.DeskQuote
+                .Include(m => m.RushOption)
+                    .FirstOrDefaultAsync(m => m.DeskQuoteId == id);
+
 
             if (deskquote == null)
             {
@@ -75,10 +80,12 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             Material materialObject = materialQuery.FirstOrDefault();
 
 
-            Console.WriteLine(materialObject.price);
-            // Console.WriteLine(DeskQuote.RushOption.days);
-            Console.WriteLine();
-            Console.WriteLine();
+            // Console.WriteLine(materialObject.price);
+            // Console.WriteLine("Hellow");
+            // int area = DeskQuote.Desk.depth * DeskQuote.Desk.width;
+            // Console.WriteLine(rushObject.getRushCost(rushObject, area));
+            // // Console.WriteLine(area);
+            // Console.WriteLine("Honest");
 
 
 
@@ -90,10 +97,9 @@ namespace MegaDeskWeb.Pages_DeskQuotes
                 DeskQuote.quoteTotalPrice +
                 DeskQuote.Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width) +
                 DeskQuote.Desk.getDrawerCost(DeskQuote.Desk.drawerCount) +
-                materialObject.price;
-                // + 
-                // Desk.getAreaCost(DeskQuote.Desk.depth,DeskQuote.Desk.width);
-            
+                materialObject.price + 
+                rushObject.getRushCost(rushObject, DeskQuote.Desk.depth * DeskQuote.Desk.width);
+            // Console.WriteLine("HI");
             // DeskQuote.quoteTotalPrice = 
             //     DeskQuote.quoteTotalPrice +
             //     Desk.getAreaCost(Desk.depth,Desk.width) + 

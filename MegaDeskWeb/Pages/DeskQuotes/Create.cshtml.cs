@@ -60,10 +60,11 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             //add desk
 
             _context.Desk.Add(Desk);
+            // _context.RushOption.Add(Rush);
             // _context.Material.Add(MaterialsDB);
             await _context.SaveChangesAsync();
 
-            Console.WriteLine(_context.RushOption);
+
 
             // _context.DeskQuote.Add(RushOption);
             // await _context.SaveChangesAsync();
@@ -122,6 +123,9 @@ namespace MegaDeskWeb.Pages_DeskQuotes
             
             // DeskQuote.finishDate = DateTime.Now;
             // DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDays)); 
+
+            DeskQuote.RushOption = rushObject;
+
             DeskQuote.finishDate = DateTime.Now.AddDays(Convert.ToDouble(rushDaysValue)); 
             DeskQuote.quoteTotalPrice = 
                 DeskQuote.quoteTotalPrice + 
