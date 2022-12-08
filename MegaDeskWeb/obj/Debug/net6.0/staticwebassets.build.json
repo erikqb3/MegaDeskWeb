@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8n9MN0MVRFcIB7xVR8Puw6aFcKH64Hsn+OObPXY7Xo0=",
+  "Hash": "sle1w4oSFE08V9u/GQAtJBYEpViA6hB6e7kLkoiEbf4=",
   "Source": "MegaDeskWeb",
   "BasePath": "_content/MegaDeskWeb",
   "Mode": "Default",
@@ -49,23 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MegaDeskWeb.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\1x\\Asset 1.png",
-      "SourceId": "MegaDeskWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\",
-      "BasePath": "_content/MegaDeskWeb",
-      "RelativePath": "1x/Asset 1.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\1x\\Asset 1.png"
     },
     {
       "Identity": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\android-chrome-192x192.png",
@@ -134,40 +117,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
-    },
-    {
-      "Identity": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\favicon_io.zip",
-      "SourceId": "MegaDeskWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\",
-      "BasePath": "_content/MegaDeskWeb",
-      "RelativePath": "favicon_io.zip",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon_io.zip"
-    },
-    {
-      "Identity": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\favicon_io\\site.webmanifest",
-      "SourceId": "MegaDeskWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\",
-      "BasePath": "_content/MegaDeskWeb",
-      "RelativePath": "favicon_io/site.webmanifest",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon_io\\site.webmanifest"
     },
     {
       "Identity": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\favicon-16x16.png",

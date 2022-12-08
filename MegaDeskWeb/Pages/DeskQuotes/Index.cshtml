@@ -50,10 +50,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.quoteTotalPrice)
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.DeskQuoteId">Edit</a>
-                <a asp-page="./Details" asp-route-id="@item.DeskQuoteId">Details</a>
-                <a asp-page="./Delete" asp-route-id="@item.DeskQuoteId">Delete</a>
+            <td class="items">
+                <a asp-page="./Edit" asp-route-id="@item.DeskQuoteId"><span class="material-symbols-outlined">edit</span></a>
+                <a asp-page="./Details" asp-route-id="@item.DeskQuoteId"><span class="material-symbols-outlined">info</span></a>
+                <a asp-page="./Delete" asp-route-id="@item.DeskQuoteId"><span class="material-symbols-outlined">delete</span></a>
             </td>
         </tr>
 }

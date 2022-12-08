@@ -6,6 +6,8 @@ body {
   font-weight: bold;
   position: relative;
   min-height: 100%;
+  background-color: #f1f1f1;
+  width: 100%;
 }
 
 a {
@@ -14,11 +16,13 @@ a {
   padding: 5px;
 }
 
-a:hover {
-  background-color: #F0E9CC;
+a:hover, .material-symbols-outlined:hover {
   color: #42826C;
+}
+
+.nav-link:hover {
+  background-color: #80B4A2;
   border-radius: 5px;
-  padding: 5px;
 }
 
 a:after {
@@ -32,6 +36,11 @@ h1, header, th {
 
 th {
   font-size: 18px;
+}
+
+header {
+  background-color: #F0E9CC;
+  width: 100%;
 }
 
 .navbar-brand {
