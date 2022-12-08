@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Layout";
 }
 
 <h1>Index</h1>
@@ -13,15 +14,9 @@
 <table class="table">
     <thead>
         <tr>
-            @* <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Desk)
-            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].customerName)
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].contactMethod)
-            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].contactInfo)
             </th>
@@ -40,15 +35,9 @@
     <tbody>
 @foreach (var item in Model.DeskQuote) {
         <tr>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.Desk.DeskId)
-            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.customerName)
             </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.contactMethod)
-            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.contactInfo)
             </td>
@@ -62,8 +51,8 @@
                 @Html.DisplayFor(modelItem => item.quoteTotalPrice)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.DeskQuoteId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.DeskQuoteId">Details</a> |
+                <a asp-page="./Edit" asp-route-id="@item.DeskQuoteId">Edit</a>
+                <a asp-page="./Details" asp-route-id="@item.DeskQuoteId">Details</a>
                 <a asp-page="./Delete" asp-route-id="@item.DeskQuoteId">Delete</a>
             </td>
         </tr>
