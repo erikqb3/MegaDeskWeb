@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\MegaDeskWeb.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\1x\\Asset 1.png",
-      "PackagePath": "staticwebassets\\1x\\Asset 1.png"
-    },
-    {
       "Id": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\android-chrome-192x192.png",
       "PackagePath": "staticwebassets\\android-chrome-192x192.png"
     },
@@ -35,14 +31,6 @@
     {
       "Id": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\favicon_io.zip",
-      "PackagePath": "staticwebassets\\favicon_io.zip"
-    },
-    {
-      "Id": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\favicon_io\\site.webmanifest",
-      "PackagePath": "staticwebassets\\favicon_io\\site.webmanifest"
     },
     {
       "Id": "C:\\Users\\merca\\Documents\\GitHub\\MegaDeskWeb\\MegaDeskWeb\\wwwroot\\js\\site.js",
