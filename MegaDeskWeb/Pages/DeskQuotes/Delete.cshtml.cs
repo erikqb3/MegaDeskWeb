@@ -68,12 +68,12 @@ namespace MegaDeskWeb.Pages_DeskQuotes
                 await _context.SaveChangesAsync();
             }
             
-            if (desk != null)
-            {
-                Desk = desk;
-                _context.Desk.Remove(Desk);
-                await _context.SaveChangesAsync();
-            }
+            // if (desk != null)
+            // {
+            //     Desk = desk;
+            //     _context.Desk.Remove(Desk);
+            //     await _context.SaveChangesAsync();
+            // }
 
             return RedirectToPage("./Index");
         }
