@@ -1,18 +1,59 @@
-html {
-  font-size: 14px;
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poiret+One&family=Raleway:wght@100&display=swap');
+body {
+  margin-bottom: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  min-height: 100%;
+}
+
+a {
+  color: #80B4A2;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+a:hover {
+  background-color: #F0E9CC;
+  color: #42826C;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+a:after {
+  color: #42826C;
+}
+
+h1, header, th {
+  font-weight: bold;
+  font-family: 'Poiret One', cursive;
+}
+
+th {
+  font-size: 18px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.navbar-nav {
+  font-size: 20px;
+}
+
+footer {
+  position: fixed;
+  padding: 10px 10px 0px 10px;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  /* Height of the footer*/
+  height: 0px;
 }
 
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
 }
